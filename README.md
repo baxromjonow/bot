@@ -1,158 +1,81 @@
-# Asadbek Quiz Bot
+# Aziz Academy Quiz Bot v1.3.1
 
-Telegram guruhlariga dushanbadan shanbagacha kuniga 3 marta bir xil quiz yuboradigan bot.
+## Yangi funksiyalar
 
-## Bot imkoniyatlari
+- `/panel` — tugmali admin panel
+- `/stats` — jami, navbat, yuborilgan, guruhlar, bugungi holat
+- `/clearqueue` — yuborilmagan quizlarni tasdiq bilan tozalash
+- `/resetbot` — quizlar va tarixni nollash, guruhlar va jadval saqlanadi
+- Excel importda takroriy savollar avtomatik tashlab ketiladi
+- Excel importdan keyin kategoriya bo‘yicha hisobot
+- Variantlar Telegram tomonidan har safar random aralashtiriladi
+- `/settings` — Telegram ichidan 3 ta vaqt va queue ogohlantirish chegarasini o‘zgartirish
+- `/pause` va `/resume`
+- Navbat kamayganda admin uchun avtomatik ogohlantirish
+- `/backup` — quizlar va guruhlarni `.xlsx` fayl qilib olish
+- GitHub Action endi har 5 daqiqada jadvalni tekshiradi; haqiqiy vaqt Supabase sozlamasidan olinadi
 
-- Quizni Telegram ichida bosqichma-bosqich kiritish
-- 4 ta javob variantidan to‘g‘risini belgilash
-- Quizlarni navbatga saqlash
-- Barcha ro‘yxatdan o‘tgan guruhlarga bir xil quiz yuborish
-- Guruhlarni `/register` va `/removegroup` bilan boshqarish
-- `/sendnow` orqali keyingi quizni darhol yuborish
-- Keyinchalik statistika, fanlar, darajalar va Excel import qo‘shishga tayyor tuzilma
 
-## 1. ADMIN_ID ni olish
+## v1.3.1 xavfsizlik yangilanishi
 
-Telegram’da `@userinfobot` ga `/start` yuboring. U bergan raqam sizning `ADMIN_ID` qiymatingiz bo‘ladi.
+- `xlsx` / SheetJS npm paketi olib tashlandi.
+- Excel import `read-excel-file` orqali ishlaydi.
+- `/backup` Excel fayli `write-excel-file` orqali yaratiladi.
+- Funksiyalar v1.3 bilan bir xil; Supabase migrationni qayta ishlatish shart emas, agar v1.3 migration allaqachon bajarilgan bo‘lsa.
 
-## 2. Supabase bazasini yaratish
+## MUHIM: yangilash tartibi
 
-1. Supabase’da yangi loyiha yarating.
-2. `SQL Editor` bo‘limini oching.
-3. `supabase/schema.sql` faylidagi kodni to‘liq ishga tushiring.
-4. `Project Settings → API` dan:
-   - Project URL
-   - `service_role` secret key
-   qiymatlarini oling.
+### 1. Avval Supabase migration
 
-`service_role` kalitini hech qachon GitHub’ga joylamang va foydalanuvchiga ko‘rsatmang.
+Supabase → SQL Editor → New query.
+`supabase/migration_v1.3.sql` faylini to‘liq nusxalab `Run` bosing.
 
-## 3. Vercel Environment Variables
+Bu migration eski quizlar va guruhlarni o‘chirmaydi.
 
-Vercel loyihasining `Settings → Environment Variables` bo‘limiga kiriting:
+### 2. Fayllarni loyihaga almashtiring
 
-```env
-TELEGRAM_BOT_TOKEN=BotFather bergan token
-ADMIN_ID=sizning Telegram ID raqamingiz
-TELEGRAM_WEBHOOK_SECRET=uzun tasodifiy maxfiy so‘z
-CRON_SECRET=boshqa uzun tasodifiy maxfiy so‘z
-SUPABASE_URL=https://PROJECT.supabase.co
-SUPABASE_SERVICE_ROLE_KEY=service_role kaliti
-```
+v1.3.1 ichidagi fayllarni eski loyiha ustiga qo‘ying.
+`.env.local` faylingizga tegmang va GitHubga yubormang.
 
-## 4. GitHub va Vercel
-
-1. Papkani GitHub repository’ga yuklang.
-2. Repository’ni Vercel’ga import qiling.
-3. Environment Variables’ni kiriting.
-4. Deploy qiling.
-5. Tekshirish:
-
-```text
-https://LOYIHA-NOMI.vercel.app/api/health
-```
-
-Natija `{"ok":true,...}` bo‘lishi kerak.
-
-## 5. Webhook o‘rnatish
-
-Kompyuterda `.env.example` nusxasini `.env.local` deb nomlang va qiymatlarni kiriting. `WEBHOOK_URL`:
-
-```env
-WEBHOOK_URL=https://LOYIHA-NOMI.vercel.app/api/webhook
-```
-
-Terminalda:
+### 3. Kutubxonalarni o‘rnating
 
 ```bash
-npm run webhook
+npm install
 ```
 
-Webhook holatini tekshirish:
+### 4. GitHubga push
 
 ```bash
-npm run check-webhook
+git add .
+git commit -m "Quiz bot v1.3.1 xavfsiz Excel backup"
+git push
 ```
 
-## 6. Guruhlarni ulash
+Vercel avtomatik redeploy qiladi.
 
-1. Botni har bir guruhga qo‘shing.
-2. Botga xabar/quiz yuborish ruxsatini bering. Eng ishonchli usul — admin qilish.
-3. Guruh ichida o‘zingiz `/register` yuboring.
-4. Bot tasdiqlovchi xabar yuboradi.
+### 5. GitHub Actions
 
-## 7. Quiz kiritish
+`.github/workflows/quiz-schedule.yml` fayli har 5 daqiqada endpointni tekshiradi.
+`CRON_SECRET` GitHub Repository Secret avvalgidek qoladi.
 
-Botga shaxsiy chatda:
+### 6. Tekshirish
+
+Telegram botda:
 
 ```text
-/addquiz
+/panel
+/stats
+/settings
 ```
 
-Keyin bot ketma-ket so‘raydi:
+`/settings` orqali 3 ta vaqtni o‘zgartirsangiz kod yoki GitHub cronni tahrirlash shart emas.
 
-1. Savol
-2. 1-variant
-3. 2-variant
-4. 3-variant
-5. 4-variant
-6. To‘g‘ri javob raqami
-7. Izoh yoki `-`
+## Excel formati
 
-Navbatni ko‘rish:
+Birinchi varaq ustunlari:
 
 ```text
-/queue
+Savol | Variant 1 | Variant 2 | Variant 3 | Variant 4 | To'g'ri javob | Izoh | Kategoriya
 ```
 
-Darhol yuborish:
-
-```text
-/sendnow
-```
-
-## 8. Kuniga 3 marta avtomatik yuborish
-
-Vercel Hobby rejasi ichki Cron’ni kuniga bir martadan ko‘p ishlatmaydi. Shu sabab tashqi scheduler’da 3 ta vazifa yarating.
-
-Manzil:
-
-```text
-https://LOYIHA-NOMI.vercel.app/api/cron/send?key=CRON_SECRET
-```
-
-Toshkent vaqti bo‘yicha tavsiya:
-
-- 09:00
-- 14:00
-- 19:00
-- Dushanba–shanba
-- Yakshanba o‘chiq
-
-Scheduler vaqt zonasi UTC bo‘lsa:
-
-- 04:00 UTC = 09:00 Toshkent
-- 09:00 UTC = 14:00 Toshkent
-- 14:00 UTC = 19:00 Toshkent
-
-Har bir chaqiriqda navbatdagi faqat bitta quiz barcha faol guruhlarga yuboriladi.
-
-## Xavfsizlik
-
-- Token, `service_role` va maxfiy kalitlarni chatga yoki GitHub’ga yubormang.
-- `.env.local` Git tomonidan e’tiborsiz qoldirilgan.
-- Webhook va cron endpointlari maxfiy kalit bilan himoyalangan.
-
-## Excel orqali ommaviy quiz yuklash
-
-Botga shaxsiy chatda `/excel` yuboring va `.xlsx` faylni hujjat sifatida jo'nating.
-Excelning birinchi varag'ida quyidagi ustunlar bo'lishi kerak:
-
-`Savol | Variant 1 | Variant 2 | Variant 3 | Variant 4 | To'g'ri javob | Izoh`
-
-- `To'g'ri javob`: 1, 2, 3 yoki 4.
-- `Izoh`: ixtiyoriy; bo'sh yoki `-` bo'lishi mumkin.
-- Bir faylda 500 tagacha quiz.
-- Savol 300, har variant 100, izoh 200 belgidan oshmasin.
-- Faylda xatoli qator bo'lsa, hech bir quiz import qilinmaydi; bot qator raqamlarini ko'rsatadi.
+`Kategoriya` va `Izoh` ixtiyoriy. Savol bir xil bo‘lsa bot takroriy deb hisoblaydi va qayta qo‘shmaydi.

@@ -1,0 +1,24 @@
+name: Quiz Schedule
+
+on:
+  schedule:
+    - cron: '0 9 * * 1-6'
+      timezone: 'Asia/Tashkent'
+
+    - cron: '0 14 * * 1-6'
+      timezone: 'Asia/Tashkent'
+
+    - cron: '0 19 * * 1-6'
+      timezone: 'Asia/Tashkent'
+
+  workflow_dispatch:
+
+jobs:
+  send-quiz:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Send next quiz
+        run: |
+          curl --fail \
+            "https://bot-lake-zeta.vercel.app/api/cron/send?key=${{ secrets.CRON_SECRET }}"

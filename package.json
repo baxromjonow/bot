@@ -1,0 +1,15 @@
+{
+  "name": "asadbek-quiz-bot",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "dev": "vercel dev",
+    "webhook": "node --env-file=.env.local scripts/set-webhook.mjs",
+    "check-webhook": "node --env-file=.env.local scripts/check-webhook.mjs"
+  },
+  "dependencies": {}
+}

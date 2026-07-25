@@ -143,3 +143,16 @@ Har bir chaqiriqda navbatdagi faqat bitta quiz barcha faol guruhlarga yuboriladi
 - Token, `service_role` va maxfiy kalitlarni chatga yoki GitHub’ga yubormang.
 - `.env.local` Git tomonidan e’tiborsiz qoldirilgan.
 - Webhook va cron endpointlari maxfiy kalit bilan himoyalangan.
+
+## Excel orqali ommaviy quiz yuklash
+
+Botga shaxsiy chatda `/excel` yuboring va `.xlsx` faylni hujjat sifatida jo'nating.
+Excelning birinchi varag'ida quyidagi ustunlar bo'lishi kerak:
+
+`Savol | Variant 1 | Variant 2 | Variant 3 | Variant 4 | To'g'ri javob | Izoh`
+
+- `To'g'ri javob`: 1, 2, 3 yoki 4.
+- `Izoh`: ixtiyoriy; bo'sh yoki `-` bo'lishi mumkin.
+- Bir faylda 500 tagacha quiz.
+- Savol 300, har variant 100, izoh 200 belgidan oshmasin.
+- Faylda xatoli qator bo'lsa, hech bir quiz import qilinmaydi; bot qator raqamlarini ko'rsatadi.

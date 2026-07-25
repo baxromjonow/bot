@@ -1,6 +1,6 @@
 {
   "name": "asadbek-quiz-bot",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "private": true,
   "type": "module",
   "engines": {
@@ -11,5 +11,7 @@
     "webhook": "node --env-file=.env.local scripts/set-webhook.mjs",
     "check-webhook": "node --env-file=.env.local scripts/check-webhook.mjs"
   },
-  "dependencies": {}
+  "dependencies": {
+    "read-excel-file": "9.3.4"
+  }
 }

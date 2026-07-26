@@ -1,4 +1,18 @@
-# Aziz Academy Quiz Bot v1.3.1
+# Aziz Academy Quiz Bot v1.4
+
+## v1.4 — Performance yangilanishi
+
+- Tugma bosilishi bilan Telegram callback darhol tasdiqlanadi.
+- `Menu`, panel va oddiy UI amallari Supabase so‘rovisiz ishlaydi.
+- `/stats` natijasi 12 soniyalik qisqa cache bilan tezlashtirildi.
+- Jadval sozlamalari 30 soniyalik cache bilan tezlashtirildi.
+- Excel import va backup kutubxonalari faqat kerak bo‘lganda yuklanadi (lazy import).
+- Pastda doimiy `🎛 Menu` klaviaturasi qo‘shildi.
+- Webhook `callback_query` update’larini rasmiy ravishda qabul qiladi.
+- Telegram so‘rovlari uchun 8 soniyalik timeout va keep-alive qo‘shildi.
+- Quiz yuborishda Telegram parametr nomi `correct_option_id` qilib to‘g‘rilandi.
+
+> Supabase uchun yangi migration kerak emas. v1.3 migration bajarilgan bo‘lsa yetarli.
 
 ## Yangi funksiyalar
 

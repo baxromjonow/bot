@@ -22,3 +22,11 @@ Admin `/excel` -> fan tanlaydi -> 72 qatorli `.xlsx` yuboradi. Fayldagi qator ta
 - Statistika 6 fan bo‘yicha ko‘rsatiladi.
 - Navbat guruhning fan, dars va 72 talik progressini ko‘rsatadi.
 - Secure connect, Excel import va sender progress mexanizmi saqlandi.
+
+
+## v1.6.2 — Maxsus quiz
+- Maxsus Excel alohida navbatga yuklanadi.
+- Admin xohlagan vaqtda keyingi maxsus quizni barcha faol guruhlarga birdan yuboradi.
+- Maxsus yuborish fan, dars, quiz_position va avtomatik jadval progressiga tegmaydi.
+- Maxsus navbatni ko‘rish va yuborilmagan maxsus quizlarni tozalash mavjud.
+- Ishga tushirishdan oldin supabase/migration_v1.6.2.sql ni bir marta Run qiling.

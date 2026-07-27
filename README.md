@@ -28,3 +28,11 @@ Yo‘nalishlar:
 
 ### Muhim
 Migration mavjud quizlarni o‘chirmaydi. Yo‘nalishi bo‘lmagan eski quizlar `HTML & CSS` ga biriktiriladi. General reset guruhlar va ularning yo‘nalishini saqlab qoladi.
+
+
+## v1.5.2 — xavfsiz /connect
+- `/connect` va `/removegroup` faqat guruh creator/adminiga ishlaydi.
+- Yo‘nalish tugmalarini faqat `/connect` yuborgan administrator bosa oladi.
+- Boshqa foydalanuvchi tugmani bossa guruh sozlamasi o‘zgarmaydi.
+- Yo‘nalish tanlangach inline tugmalar olib tashlanadi.
+- Guruh oldindan ulangan bo‘lsa, hozirgi yo‘nalish ko‘rsatiladi va faqat admin tasdiqlasa almashtiriladi.

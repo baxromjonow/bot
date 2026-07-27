@@ -6,7 +6,7 @@ Yo‘nalishlar:
 - 🟨 JavaScript
 
 ## Yangiliklar
-- `/register` guruh ichida yo‘nalish tanlatadi.
+- `/connect` guruh ichida yo‘nalish tanlatadi.
 - Excel yuklashdan oldin yo‘nalish tanlanadi.
 - Har yo‘nalishning queue’i alohida.
 - 09:00, 14:00, 19:00 da scheduler uchala yo‘nalishdan bittadan quiz olib, faqat mos guruhlarga yuboradi.
@@ -24,7 +24,7 @@ Yo‘nalishlar:
 4. `npm audit`
 5. `git add . && git commit -m "quiz bot v1.5 tracks" && git push`
 6. Vercel Ready bo‘lgach `npm run webhook`.
-7. Eski guruhlarga `/register` yuborib yo‘nalish tanlang yoki Admin panel → Guruhlar orqali yo‘nalish biriktiring.
+7. Eski guruhlarga `/connect` yuborib yo‘nalish tanlang yoki Admin panel → Guruhlar orqali yo‘nalish biriktiring.
 
 ### Muhim
 Migration mavjud quizlarni o‘chirmaydi. Yo‘nalishi bo‘lmagan eski quizlar `HTML & CSS` ga biriktiriladi. General reset guruhlar va ularning yo‘nalishini saqlab qoladi.

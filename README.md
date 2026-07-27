@@ -16,3 +16,9 @@ Admin `/excel` -> fan tanlaydi -> 72 qatorli `.xlsx` yuboradi. Fayldagi qator ta
 
 ## Xavfsizlik
 `/connect` faqat guruh adminiga ishlaydi; tanlov tugmalarini faqat connectni boshlagan admin bosa oladi.
+
+
+## v1.6.1
+- Statistika 6 fan bo‘yicha ko‘rsatiladi.
+- Navbat guruhning fan, dars va 72 talik progressini ko‘rsatadi.
+- Secure connect, Excel import va sender progress mexanizmi saqlandi.

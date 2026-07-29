@@ -30,3 +30,9 @@ Admin `/excel` -> fan tanlaydi -> 72 qatorli `.xlsx` yuboradi. Fayldagi qator ta
 - Maxsus yuborish fan, dars, quiz_position va avtomatik jadval progressiga tegmaydi.
 - Maxsus navbatni ko‘rish va yuborilmagan maxsus quizlarni tozalash mavjud.
 - Ishga tushirishdan oldin supabase/migration_v1.6.2.sql ni bir marta Run qiling.
+
+
+## v1.6.3 Clean UI
+- Maxsus quiz boshqaruvi bitta xabarni edit qilib ishlaydi.
+- Tasdiq, bekor qilish, navbat va natija oynalari chatni to‘ldirib yubormaydi.
+- Reply menu persistent emas: foydalanuvchi yopsa majburan qayta ochilmaydi.

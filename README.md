@@ -36,3 +36,12 @@ Admin `/excel` -> fan tanlaydi -> 72 qatorli `.xlsx` yuboradi. Fayldagi qator ta
 - Maxsus quiz boshqaruvi bitta xabarni edit qilib ishlaydi.
 - Tasdiq, bekor qilish, navbat va natija oynalari chatni to‘ldirib yubormaydi.
 - Reply menu persistent emas: foydalanuvchi yopsa majburan qayta ochilmaydi.
+
+
+## v1.6.4 — Quiz Replace + takrorlanish himoyasi
+- Fan Exceli yuklanganda eski shu fan savollari transaction ichida almashtiriladi.
+- `subject + quiz_no` bazada yagona.
+- Delivery yuborishdan oldin reservation qilinadi; parallel cron takroriy yubora olmaydi.
+- Guruhda oxirgi quiz ID/fan/raqam saqlanadi.
+- Guruhning fan va x/72 progressi Excel almashtirilganda saqlanadi.
+- Scheduler 4 daqiqadan ortiq kechikkan eski slotni yubormaydi.

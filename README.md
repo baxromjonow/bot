@@ -1,7 +1,7 @@
 # Aziz Academy Quiz Bot v1.6
 
 ## Adaptive Group Progress
-- 6 fan: Word, Excel, PowerPoint, HTML, CSS, JavaScript.
+- 5 fan: Word, Excel, PowerPoint, HTML & CSS, JavaScript.
 - Har fan banki: 72 quiz.
 - /connect: fan + joriy dars (1–12). Har dars 72/12 = 6 quiz segment. Masalan 7-dars => 37/72 dan boshlaydi.
 - Har scheduler slotida (masalan 09:00, 14:00, 19:00) guruhga joriy progressidagi bitta quiz ketadi va progress +1 bo‘ladi.

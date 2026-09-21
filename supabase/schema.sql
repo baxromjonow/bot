@@ -2,6 +2,7 @@ create table if not exists public.groups (
   chat_id bigint primary key,
   title text not null,
   active boolean not null default true,
+  quiz_topic_id bigint,
   added_at timestamptz not null default now()
 );
 
